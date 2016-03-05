@@ -1,22 +1,31 @@
 'use strict';
 
-angular.module('githubInspector.searchbox-directive', ['ui.bootstrap'])
-    .directive('searchbox', function($window) {
+angular.module('githubInspector.searchbox-directive', ['ui.bootstrap','repoService'])
+    .directive('searchbox', function($window, Repo) {
         var gh = $window.parseGithub;
         return {
             controller: function () {
-                this.repo = '';
-                this.error = "Couldn't find the repo. Please check your query and try again.";
-                this.open= false;
-                this.toggleTooltip = function(action) {
-                    this.open = !this.open;
+                var vm = this;
+
+                vm.repo = '';
+                vm.error = "Couldn't find the repo. Please check your query and try again.";
+                vm.open= false;
+                vm.toggleTooltip = function(action) {
+                    vm.open = !vm.open;
                 }
-                this.submit = function() {
-                    var query = gh(this.repo);
+                vm.submit = function() {
+                    var query = gh(vm.repo);
                     if(!query.repository)
-                        return this.toggleTooltip();
+                        return vm.toggleTooltip();
 
                     //Query Github
+                    Repo.get(query.owner, query.name)
+                        .success(function(data) {
+                            console.log(data);
+                        })
+                        .error(function(data) {
+                            vm.toggleTooltip();
+                        });
                 }
             },
             controllerAs: 'search',
