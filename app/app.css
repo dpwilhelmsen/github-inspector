@@ -2,3 +2,11 @@
 body {
   padding-top: 70px;
 }
+
+.tooltip.error .tooltip-inner {
+  background-color: #e51c23;
+}
+
+.tooltip.error .tooltip-arrow {
+  border-bottom-color: #e51c23;
+}

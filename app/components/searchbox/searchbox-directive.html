@@ -1,7 +1,10 @@
 <form class="form-horizontal" ng-submit="search.submit()">
     <div class="form-group">
         <div class="col-sm-8">
-            <input type="text" class="form-control" ng-model="search.name" placeholder="e.g. github/hubot, https://github.com/github/hubot">
+            <input uib-tooltip="{{search.error}}" tooltip-is-open="search.open" tooltip-trigger="none"
+                   tooltip-class="error" tooltip-placement="bottom" type="text" class="form-control"
+                   ng-click="search.open = false" ng-model="search.repo"
+                   placeholder="e.g. github/hubot, https://github.com/github/hubot">
         </div>
         <div class="col-sm-4">
             <button type="submit" class="btn btn-success btn-lg btn-block">
