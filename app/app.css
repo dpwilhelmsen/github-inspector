@@ -57,3 +57,23 @@ body {
 .contributor-name {
   font-size:20px;
 }
+
+.user-info {
+  margin-top:20px;
+}
+
+.user-info .user-avatar {
+  margin-right:30px;
+}
+
+.user-info .username {
+  margin-top:0;
+}
+
+.repo-row {
+  border-bottom: 1px solid #ccc;
+}
+
+.repo-row i {
+  margin-right:15px;
+}

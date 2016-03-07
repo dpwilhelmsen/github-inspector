@@ -5,7 +5,7 @@ angular.module('githubInspector', [
   'ngRoute',
   'githubInspector.home',
   'githubInspector.repo',
-  'githubInspector.view2',
+  'githubInspector.user',
   'githubInspector.version',
   'githubInspector.searchbox-directive',
   'ui.bootstrap'

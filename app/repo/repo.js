@@ -6,7 +6,7 @@ angular.module('githubInspector.repo', ['ngRoute', 'repoService'])
   $routeProvider.when('/repo/:owner/:repo', {
     templateUrl: 'repo/repo.html',
     controller: 'RepoCtrl',
-    controllerAs: 'repo'
+    controllerAs: 'ctrl'
   });
 }])
 

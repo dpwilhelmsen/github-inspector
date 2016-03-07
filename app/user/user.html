@@ -1,0 +1,44 @@
+<div ng-if="ctrl.error">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1>We're Sorry</h1>
+      <p class="lead">We couldn't find the user {{ ctrl.username }}. <br>
+        Try searching for a repo using the form below!.</p>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8" searchbox></div>
+  </div>
+</div>
+
+<div ng-if="!ctrl.error">
+  <div class="row">
+    <div class="col-lg-12 user-info">
+      <img class="user-avatar pull-left" ng-src="{{ ctrl.userData.avatar_url}}">
+      <h1 class="username">{{ ctrl.userData.login }}</h1>
+      <h3>{{ ctrl.userData.name }}</h3>
+      <h4>{{ ctrl.userData.location }}</h4>
+      <h4>{{ ctrl.userData.company }}</h4>
+      <h4>{{ ctrl.userData.email }}</h4>
+      <h4>{{ ctrl.userData.followers }} Followers</h4>
+    </div>
+  </div>
+  <div class="row">
+    <hr>
+    <div class="repo-row" ng-repeat="repo in ctrl.repos">
+      <h3>
+        <a ng-href="#/repo/{{ repo.full_name }}">
+          <i ng-if="repo.fork" class="fa fa-code-fork" atl="Fork" title="Fork"></i>{{ repo.full_name }}
+        </a>
+      </h3>
+      <span class="small-text"><a ng-href="{{repo.url}}" target="_blank">{{repo.url}}
+        <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></span>
+      <h4>{{ repo.description }}</h4>
+      <h4 ng-if="repo.homepage">
+        <a ng-href="{{repo.homepage}}" target="_blank">{{repo.homepage}}
+          <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
+      </h4>
+    </div>
+  </div>
+</div>
