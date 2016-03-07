@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('githubInspector.searchbox-directive', ['ui.bootstrap','repoService'])
-    .directive('searchbox', function($window, Repo) {
+    .directive('searchbox', function($window, RepoInfo, $location) {
         var gh = $window.parseGithub;
         return {
             controller: function () {
@@ -19,9 +19,9 @@ angular.module('githubInspector.searchbox-directive', ['ui.bootstrap','repoServi
                         return vm.toggleTooltip();
 
                     //Query Github
-                    Repo.get(query.owner, query.name)
+                    RepoInfo.get(query.owner, query.name)
                         .success(function(data) {
-                            console.log(data);
+                            $location.path('/repo/' + query.owner + '/' + query.name);
                         })
                         .error(function(data) {
                             vm.toggleTooltip();

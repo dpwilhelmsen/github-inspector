@@ -10,3 +10,50 @@ body {
 .tooltip.error .tooltip-arrow {
   border-bottom-color: #e51c23;
 }
+
+.repo-links a {
+  padding: 0 10px 0 0;
+}
+
+.repo-links a + a {
+  border-left: 1px solid #aaa;
+  padding: 0 10px;
+}
+
+.repo-links .glyphicon, .glyphicon-new-window {
+  font-size: 0.8em;
+}
+
+.stats {
+  text-align:center;
+}
+.stats a {
+  min-width:150px;
+  margin:10px 15px;
+}
+
+.col-md-4.contributor-entry {
+  margin: 10px 0;
+}
+
+.contributor-entry a {
+  text-decoration: none;
+  color: #666666;
+}
+.contributor-info {
+  display:inline-block;
+}
+
+.user-avatar {
+  border-radius: 15%;
+  overflow: hidden;
+  /*box-shadow: 5px 5px 5px rgba(0,0,0,0.3);*/
+  border: 1px solid #eee;
+  max-width:25%;
+  margin-right: 20px;
+  vertical-align: top;
+}
+
+.contributor-name {
+  font-size:20px;
+}
