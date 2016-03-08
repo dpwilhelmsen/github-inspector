@@ -6,7 +6,6 @@ angular.module('githubInspector', [
   'githubInspector.home',
   'githubInspector.repo',
   'githubInspector.user',
-  'githubInspector.version',
   'githubInspector.searchbox-directive',
   'ui.bootstrap'
 ]).

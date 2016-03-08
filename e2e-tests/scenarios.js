@@ -5,22 +5,36 @@
 describe('my app', function() {
 
 
-  it('should automatically redirect to /repo when location hash/fragment is empty', function() {
+  it('should have the search form on homepage', function() {
     browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/repo");
+    expect(element(by.css('div[searchbox]')).isPresent()).toBeTruthy();
+  });
+
+  it('should return visible error when incorrect repo is entered', function() {
+    browser.get('index.html');
+    element(by.css('div[searchbox] input')).sendKeys('fakerepo');
+    element(by.css('button[type=submit]')).click();
+    expect(element(by.css('.tooltip-inner')).isDisplayed()).toBeTruthy();
+  });
+
+  it('should return direct user to repo when valid repo entered', function() {
+    browser.get('index.html');
+    element(by.css('div[searchbox] input')).sendKeys('github/hubot');
+    element(by.css('button[type=submit]')).click();
+    expect(browser.getLocationAbsUrl()).toMatch("/repo/github/hubot");
   });
 
 
   describe('repo', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/repo');
+      browser.get('index.html#/repo/github/hubot');
     });
 
 
     it('should render repo when user navigates to /repo', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+      expect(element.all(by.css('[ng-view] h1')).first().getText()).
+        toMatch(/github\/hubot/);
     });
 
   });
@@ -29,13 +43,13 @@ describe('my app', function() {
   describe('user', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/user');
+      browser.get('index.html#/user/dpwilhelmsen');
     });
 
 
-    it('should render user when user navigates to /user', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
+    it('should render user when navigating to /user', function() {
+      expect(element.all(by.css('[ng-view] h1')).first().getText()).
+      toMatch(/dpwilhelmsen/);
     });
 
   });

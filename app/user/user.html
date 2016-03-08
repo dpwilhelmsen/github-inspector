@@ -26,6 +26,9 @@
   </div>
   <div class="row">
     <hr>
+    <div ng-if="ctrl.repos_error">
+      {{ ctrl.username }} doesn't seem to have any public repositories.
+    </div>
     <div class="repo-row" ng-repeat="repo in ctrl.repos">
       <h3>
         <a ng-href="#/repo/{{ repo.full_name }}">

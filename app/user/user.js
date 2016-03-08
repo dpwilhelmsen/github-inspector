@@ -15,21 +15,17 @@ angular.module('githubInspector.user', ['ngRoute', 'userService'])
   vm.username = $routeParams.username;
   UserInfo.get(vm.username)
       .success(function(data){
-        console.log(data);
         vm.userData = data;
       })
       .error(function(data) {
         vm.error = true;
-        console.log(data);
       });
 
   UserInfo.all_repos(vm.username)
       .success(function(data){
-        console.log(data);
         vm.repos = data;
       })
       .error(function(data) {
         vm.repos_error = true;
-        console.log(data);
       });
 }]);

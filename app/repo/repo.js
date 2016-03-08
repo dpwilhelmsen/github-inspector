@@ -16,20 +16,16 @@ angular.module('githubInspector.repo', ['ngRoute', 'repoService'])
   vm.repoName = $routeParams.repo;
   RepoInfo.get(vm.repoOwner, vm.repoName)
     .success(function(data){
-      console.log(data);
       vm.repoData = data;
     })
     .error(function(data) {
       vm.error = true;
-      console.log(data);
     });
   RepoInfo.contributors(vm.repoOwner, vm.repoName)
       .success(function(data){
-        console.log(data);
         vm.contributors = data;
       })
       .error(function(data) {
         vm.contributors_error = true;
-        console.log(data);
       });
 }]);
